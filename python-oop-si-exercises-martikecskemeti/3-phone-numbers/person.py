@@ -3,18 +3,20 @@ class Person():
     _phone_number = None
 
     def __init__(self, name, phone_number):
-        # implent this method
-        pass  # delete this
+        self._name = name
+        self._phone_number = phone_number
 
     def is_phone_number_matching(self, input_phone_number):
-        # implent this method
-        pass  # delete this
+        return self._phone_number == input_phone_number
 
     def get_name(self):
-        # implent this method
-        pass  # delete this
+        return self._name
 
     @staticmethod
     def normalize_phone_number(phone_number):
-        # implent this method
-        pass  # delete this
+        char = [" ", "  ", "-", "--"]
+        phone_num = ""
+        for num in phone_number:
+            if num not in char:
+                phone_num += num
+        return phone_num
