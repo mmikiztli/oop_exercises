@@ -19,8 +19,7 @@ def generate_doors(count=100):
 def toggle_doors(doors):
     for i in range(1, len(doors) + 1):
         for j in range(i, len(doors) + 1, i):
-            if doors[j - 1].id == j:
-                Door.toggle(doors[j - 1])
+            Door.toggle(doors[j - 1])
     return doors
 
 
