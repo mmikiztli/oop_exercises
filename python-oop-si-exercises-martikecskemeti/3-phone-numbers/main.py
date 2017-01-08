@@ -19,7 +19,7 @@ def get_csv_file_name(argv_list):
 
 def format_output(person):
     if person != None:
-        return "This number belongs to: " + person._name
+        return "This number belongs to: " + person.get_name()
     else:
         return 'No match found.'
 
@@ -31,12 +31,10 @@ def get_person_by_phone_number(person_list, user_input_phone_number):
 
 
 def get_person_by_chunk_number(person_list, user_input_chunk_number):  # Extra feature
-    user_input_chunk_number = normalize_phone_number(user_input_chunk_number)
     owners = []
-    num_len = len(user_input_chunk_number)
     for person in person_list:
-        if user_input_chunk_number == person._phone_number[:num_len]:
-            owners.append(person._name)
+        if person.is_phone_number_matching_start(user_input_chunk_number):
+            owners.append(person.get_name())
     return owners
 
 
