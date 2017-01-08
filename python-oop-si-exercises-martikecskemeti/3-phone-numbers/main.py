@@ -26,15 +26,16 @@ def format_output(person):
 
 def get_person_by_phone_number(person_list, user_input_phone_number):
     for person in person_list:
-        if Person.normalize_phone_number(person._phone_number) == Person.normalize_phone_number(user_input_phone_number):
+        if person.is_phone_number_matching(user_input_phone_number):
             return person
 
 
 def get_person_by_chunk_number(person_list, user_input_chunk_number):  # Extra feature
+    user_input_chunk_number = normalize_phone_number(user_input_chunk_number)
     owners = []
-    num_len = len(Person.normalize_phone_number(user_input_chunk_number))
+    num_len = len(user_input_chunk_number)
     for person in person_list:
-        if Person.normalize_phone_number(user_input_chunk_number) == Person.normalize_phone_number(person._phone_number)[:num_len]:
+        if user_input_chunk_number == person._phone_number[:num_len]:
             owners.append(person._name)
     return owners
 
